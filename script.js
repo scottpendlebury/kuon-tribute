@@ -133,25 +133,34 @@
 
         if (!state.lightbox) return;
 
-        // Collect all gallery items with data-caption
-        state.galleryItems = $$('.gallery-item, .cover-card');
-        state.galleryItems.forEach((item, index) => {
-            const placeholder = item.querySelector('.gallery-placeholder, .cover-image');
-            const caption = item.querySelector('figcaption');
+        // Collect all gallery items with images
+        const gallerySelectors = [
+            '.artwork-gallery .gallery-item',
+            '.covers-grid .cover-card',
+            '.concept-grid .concept-card',
+            '.screenshots-grid .gallery-item'
+        ];
 
-            if (placeholder) {
-                placeholder.style.cursor = 'zoom-in';
-                placeholder.addEventListener('click', () => openLightbox(index));
-                placeholder.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        openLightbox(index);
-                    }
-                });
-                placeholder.setAttribute('tabindex', '0');
-                placeholder.setAttribute('role', 'button');
-                placeholder.setAttribute('aria-label', caption?.textContent || 'View image');
-            }
+        state.galleryItems = [];
+        gallerySelectors.forEach(selector => {
+            $$(selector).forEach(item => {
+                const img = item.querySelector('img');
+                const caption = item.querySelector('figcaption');
+                if (img) {
+                    state.galleryItems.push({ item, img, caption });
+                    img.style.cursor = 'zoom-in';
+                    img.addEventListener('click', () => openLightbox(state.galleryItems.length - 1));
+                    img.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            openLightbox(state.galleryItems.length - 1);
+                        }
+                    });
+                    img.setAttribute('tabindex', '0');
+                    img.setAttribute('role', 'button');
+                    img.setAttribute('aria-label', caption?.textContent || 'View image');
+                }
+            });
         });
 
         // Close button
@@ -179,20 +188,11 @@
         if (index < 0 || index >= state.galleryItems.length) return;
 
         state.currentGalleryIndex = index;
-        const item = state.galleryItems[index];
-        const placeholder = item.querySelector('.gallery-placeholder, .cover-image');
-        const caption = item.querySelector('figcaption');
+        const { img, caption } = state.galleryItems[index];
 
-        // For now, we use the placeholder's background as the "image"
-        // In a real scenario, you'd have actual image URLs
-        const bgColor = getComputedStyle(placeholder).backgroundColor;
-        const bgImage = getComputedStyle(placeholder).backgroundImage;
-
-        // Create a canvas representation or use the placeholder style
-        state.lightboxImage.style.background = bgImage !== 'none' ? bgImage : bgColor;
-        state.lightboxImage.style.backgroundSize = 'cover';
-        state.lightboxImage.style.backgroundPosition = 'center';
-        state.lightboxImage.src = ''; // Clear any src
+        state.lightboxImage.src = img.src;
+        state.lightboxImage.alt = img.alt || '';
+        state.lightboxImage.style.background = 'none';
         state.lightboxCaption.textContent = caption?.textContent || '';
 
         state.lightbox.hidden = false;
@@ -206,6 +206,7 @@
         state.lightbox.hidden = true;
         document.body.style.overflow = '';
         state.currentGalleryIndex = -1;
+        state.lightboxImage.src = '';
     }
 
     function navigateLightbox(direction) {
@@ -362,18 +363,18 @@
     // ==========================================================================
     function initCharacterCards() {
         $$('.character-card').forEach(card => {
-            const silhouette = card.querySelector('.portrait-silhouette');
-            if (!silhouette) return;
+            const portraitImg = card.querySelector('.portrait-img');
+            if (!portraitImg) return;
 
             card.addEventListener('mouseenter', () => {
-                silhouette.style.transition = 'transform 0.4s ease, filter 0.4s ease';
-                silhouette.style.transform = 'scale(1.05)';
-                silhouette.style.filter = 'brightness(1.2) contrast(1.1)';
+                portraitImg.style.transition = 'transform 0.4s ease, filter 0.4s ease';
+                portraitImg.style.transform = 'scale(1.05)';
+                portraitImg.style.filter = 'brightness(1.2) contrast(1.1)';
             });
 
             card.addEventListener('mouseleave', () => {
-                silhouette.style.transform = 'scale(1)';
-                silhouette.style.filter = 'none';
+                portraitImg.style.transform = 'scale(1)';
+                portraitImg.style.filter = 'none';
             });
         });
     }

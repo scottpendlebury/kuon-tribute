@@ -673,29 +673,12 @@ body {
     position: relative;
     overflow: hidden;
 }
-.portrait-silhouette {
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse at 50% 30%, rgba(139, 26, 26, 0.15) 0%, transparent 60%),
-        linear-gradient(180deg, transparent 40%, var(--color-ink) 100%);
-    background-size: cover;
-    background-position: center;
-}
-.portrait-silhouette.utsuki {
-    background-image:
-        radial-gradient(ellipse at 50% 30%, rgba(139, 26, 26, 0.15) 0%, transparent 60%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 300 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M150 80 Q110 120 110 180 Q110 250 150 320 Q190 250 190 180 Q190 120 150 80' fill='none' stroke='%238b1a1a' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M150 120 Q130 140 150 160 Q170 140 150 120' fill='none' stroke='%238b1a1a' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E");
-}
-.portrait-silhouette.sakuya {
-    background-image:
-        radial-gradient(ellipse at 50% 30%, rgba(45, 61, 45, 0.15) 0%, transparent 60%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 300 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M150 80 Q110 120 110 180 Q110 250 150 320 Q190 250 190 180 Q190 120 150 80' fill='none' stroke='%232d3d2d' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M130 140 L150 110 L170 140' fill='none' stroke='%232d3d2d' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E");
-}
-.portrait-silhouette.seimei {
-    background-image:
-        radial-gradient(ellipse at 50% 30%, rgba(200, 169, 94, 0.15) 0%, transparent 60%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 300 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M150 80 Q110 120 110 180 Q110 250 150 320 Q190 250 190 180 Q190 120 150 80' fill='none' stroke='%23c8a95e' stroke-width='1' opacity='0.3'/%3E%3Ccircle cx='150' cy='140' r='30' fill='none' stroke='%23c8a95e' stroke-width='0.5' opacity='0.2'/%3E%3Cpath d='M150 110 L150 170 M120 140 L180 140' stroke='%23c8a95e' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E");
+.portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-normal), filter var(--transition-normal);
 }
 .portrait-overlay {
     position: absolute;
@@ -862,55 +845,46 @@ body {
 .artwork-desc { color: var(--color-bone-dim); line-height: 1.8; }
 
 /* Gallery */
-.artwork-gallery {
+.artwork-gallery,
+.screenshots-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--space-md);
 }
 .gallery-item { position: relative; }
-.gallery-placeholder {
+.gallery-img,
+.cover-img,
+.concept-img,
+.portrait-img {
+    width: 100%;
     aspect-ratio: 3/4;
+    object-fit: cover;
     border-radius: 8px;
-    background: linear-gradient(145deg, var(--color-ink-light) 0%, var(--color-ink) 100%);
     border: 1px solid var(--color-blood-dim);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xs);
     cursor: zoom-in;
-    transition: border-color var(--transition-fast), transform var(--transition-fast);
-    position: relative;
-    overflow: hidden;
+    transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
-.gallery-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
-    opacity: 0.1;
-}
-.gallery-placeholder:hover {
+.gallery-img:hover,
+.cover-img:hover,
+.concept-img:hover,
+.portrait-img:hover {
     border-color: var(--color-blood);
     transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(139, 26, 26, 0.2);
 }
-.placeholder-text {
-    font-family: var(--font-serif);
-    font-size: 0.9rem;
-    color: var(--color-bone-dim);
-    z-index: 1;
-}
-.placeholder-kanji {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    color: var(--color-blood-dim);
-    z-index: 1;
-}
-.gallery-item figcaption {
+.gallery-item figcaption,
+.cover-card figcaption,
+.concept-card figcaption {
     margin-top: var(--space-sm);
     font-size: 0.8rem;
     color: var(--color-gray);
     text-align: center;
+    line-height: 1.5;
+}
+
+/* Screenshots grid specific */
+.screenshots-grid .gallery-item figcaption {
+    font-size: 0.75rem;
 }
 
 /* Covers grid */
@@ -920,46 +894,26 @@ body {
     gap: var(--space-md);
 }
 .cover-card { position: relative; }
-.cover-image {
+.cover-img {
+    width: 100%;
     aspect-ratio: 3/4;
+    object-fit: cover;
     border-radius: 8px;
-    background: var(--cover-gradient);
     border: 1px solid var(--color-blood-dim);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xs);
-    padding: var(--space-md);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    cursor: zoom-in;
+    transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
-.cover-image::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-}
-.cover-label {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-bone);
-    z-index: 1;
-}
-.cover-variant {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.05em;
-    color: var(--color-gray);
-    z-index: 1;
+.cover-img:hover {
+    border-color: var(--color-blood);
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(139, 26, 26, 0.2);
 }
 .cover-card figcaption {
     margin-top: var(--space-sm);
     font-size: 0.75rem;
     color: var(--color-gray);
     text-align: center;
+    line-height: 1.5;
 }
 
 /* Concept grid */
@@ -969,25 +923,39 @@ body {
     gap: var(--space-md);
 }
 .concept-card {
-    background: var(--color-ink-light);
-    border: 1px solid var(--color-blood-dim);
+    position: relative;
     border-radius: 8px;
-    padding: var(--space-lg);
-    text-align: center;
-    transition: border-color var(--transition-fast), transform var(--transition-fast);
+    overflow: hidden;
+    border: 1px solid var(--color-blood-dim);
+    transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    background: var(--color-ink);
 }
 .concept-card:hover {
     border-color: var(--color-blood);
     transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(139, 26, 26, 0.2);
 }
-.concept-icon { font-size: 2rem; margin-bottom: var(--space-sm); }
-.concept-card h4 {
+.concept-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+}
+.concept-card figcaption {
+    padding: var(--space-md);
+    text-align: center;
+}
+.concept-card figcaption h4 {
     font-family: var(--font-display);
     font-size: 1.1rem;
     color: var(--color-bone);
     margin-bottom: var(--space-xs);
 }
-.concept-card p { font-size: 0.85rem; color: var(--color-bone-dim); line-height: 1.6; }
+.concept-card figcaption p {
+    font-size: 0.85rem;
+    color: var(--color-bone-dim);
+    line-height: 1.6;
+}
 
 /* ==========================================================================
    Promotional Section
