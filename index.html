@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kuon (九怨) - FromSoftware's 2004 Survival Horror Masterpiece. Explore the haunted Fujiwara Manor in Heian-era Japan.">
+    <title>Kuon | 九怨 | FromSoftware's Forgotten Horror</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700;900&family=Kaisei+HarunoUmi:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Ambient background layers -->
+    <div class="ambient-layers" aria-hidden="true">
+        <div class="layer paper-texture"></div>
+        <div class="layer ink-wash"></div>
+        <div class="layer floating-particles" id="particles"></div>
+        <div class="layer screen-scanlines"></div>
+    </div>
+
+    <!-- Cursor follower -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header / Navigation -->
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <div class="logo-mark" aria-label="Kuon">
+                <span class="kanji" data-text="九怨">九怨</span>
+                <span class="romaji">KUON</span>
+                <span class="subtitle">Eternity • Resentment • Nine Grudges</span>
+            </div>
+            <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+                <ul id="nav-menu" class="nav-list">
+                    <li><a href="#overview" class="nav-link">Overview</a></li>
+                    <li><a href="#characters" class="nav-link">Characters</a></li>
+                    <li><a href="#development" class="nav-link">Development</a></li>
+                    <li><a href="#artwork" class="nav-link">Artwork</a></li>
+                    <li><a href="#promotional" class="nav-link">Promotional</a></li>
+                    <li><a href="#legacy" class="nav-link">Legacy</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-divider"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-background">
+                <div class="hero-silhouette" aria-hidden="true"></div>
+                <div class="hero-calligraphy" aria-hidden="true">
+                    <span class="brush-stroke">九</span>
+                    <span class="brush-stroke">怨</span>
+                </div>
+            </div>
+            <div class="hero-content">
+                <h1 id="hero-title" class="hero-title">
+                    <span class="title-kanji" data-text="九怨">九怨</span>
+                    <span class="title-romaji">KUON</span>
+                </h1>
+                <p class="hero-tagline">「九怨」 — Nine Grudges. Eternity. The spell that binds the living to the dead.</p>
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Developer</span>
+                        <span class="meta-value">FromSoftware</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Platform</span>
+                        <span class="meta-value">PlayStation 2</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Release</span>
+                        <span class="meta-value">April 1, 2004 (JP)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Genre</span>
+                        <span class="meta-value">Kaidan Action / Survival Horror</span>
+                    </div>
+                </div>
+                <a href="#overview" class="btn btn-primary scroll-indicator">
+                    <span>Enter the Manor</span>
+                    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M19 12l-7 7-7-7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="hero-corner-decoration top-left" aria-hidden="true"></div>
+            <div class="hero-corner-decoration top-right" aria-hidden="true"></div>
+            <div class="hero-corner-decoration bottom-left" aria-hidden="true"></div>
+            <div class="hero-corner-decoration bottom-right" aria-hidden="true"></div>
+        </section>
+
+        <!-- Overview Section -->
+        <section id="overview" class="section section-overview" aria-labelledby="overview-title">
+            <div class="section-header">
+                <h2 id="overview-title" class="section-title">
+                    <span class="title-number">01</span>
+                    <span class="title-text">Overview</span>
+                    <span class="title-kanji-small">概要</span>
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content">
+                <div class="overview-grid">
+                    <article class="overview-card">
+                        <header class="card-header">
+                            <span class="card-icon" aria-hidden="true">🏮</span>
+                            <h3>Setting & Atmosphere</h3>
+                        </header>
+                        <div class="card-body">
+                            <p>Kuon transports you to the <strong>Heian period (794–1185)</strong> of Japan, an era of courtly elegance masking dark supernatural undercurrents. The game unfolds within the <strong>Fujiwara Manor</strong> — a sprawling, labyrinthine estate steeped in the traditions of <em>Kwaidan</em> (Japanese ghost stories).</p>
+                            <p>Fixed camera angles, inspired by classic survival horror, frame each corridor and courtyard like <em>ukiyo-e</em> woodblock prints. The soundscape — children's eerie chanting, distant taiko drums, creaking floorboards — is rendered in Dolby Pro Logic II, enveloping you in dread.</p>
+                        </div>
+                    </article>
+                    <article class="overview-card">
+                        <header class="card-header">
+                            <span class="card-icon" aria-hidden="true">🎴</span>
+                            <h3>Gameplay Mechanics</h3>
+                        </header>
+                        <div class="card-body">
+                            <p>Three intertwining scenarios — <strong>Yin Phase</strong> (Utsuki), <strong>Yang Phase</strong> (Sakuya), and the unlockable <strong>Kuon Phase</strong> (Abe no Seimei) — revisit the same manor from different perspectives, <em>Rashomon</em>-style.</p>
+                            <ul class="mechanic-list">
+                                <li><strong>Magic Cards:</strong> Collect and equip spell cards (offensive) and summon cards (spirit allies)</li>
+                                <li><strong>Meditation:</strong> Recover MP by meditating — but vulnerability increases</li>
+                                <li><strong>Purification:</strong> Cleanse tainted areas and enemies with sacred rituals</li>
+                                <li><strong>Limited Saves:</strong> Ink stones act as save points; resources are scarce</li>
+                                <li><strong>Ailments:</strong> Poison, curse, and fear status effects impair your abilities</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="overview-card">
+                        <header class="card-header">
+                            <span class="card-icon" aria-hidden="true">🌀</span>
+                            <h3>The Kuon Spell</h3>
+                        </header>
+                        <div class="card-body">
+                            <p>At the heart of the tragedy lies the <strong>Kuon no Jutsu (九怨の術)</strong> — a forbidden ritual requiring <strong>nine sacrifices merged nine times</strong> (81 total) to resurrect the dead through silkworms born from cursed mulberry trees.</p>
+                            <p>The <strong>Twin Children</strong> — manifestations of the trees — sing the <em>Kuon Song</em> throughout the game, their lyrics hinting at the ritual's progression. Lord Fujiwara's obsession with immortality, Exorcist Doman's rivalry with Abe no Seimei, and the fate of Utsuki's sister Kureha all converge in this cycle of resentment.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Characters Section -->
+        <section id="characters" class="section section-characters" aria-labelledby="characters-title">
+            <div class="section-header">
+                <h2 id="characters-title" class="section-title">
+                    <span class="title-number">02</span>
+                    <span class="title-text">Characters</span>
+                    <span class="title-kanji-small">登場人物</span>
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content">
+                <div class="characters-carousel" role="region" aria-label="Playable characters">
+                    <article class="character-card" data-character="utsuki">
+                        <div class="character-portrait">
+                            <div class="portrait-frame">
+                                <div class="portrait-silhouette utsuki" aria-hidden="true"></div>
+                                <div class="portrait-overlay"></div>
+                            </div>
+                            <div class="character-name-block">
+                                <h3 class="character-name">Utsuki</h3>
+                                <span class="character-name-kanji">うつき</span>
+                                <span class="character-phase">Yin Phase • Chapter of Shadow</span>
+                            </div>
+                        </div>
+                        <div class="character-details">
+                            <dl class="character-stats">
+                                <dt>Role</dt><dd>Protagonist / Daughter of Doman</dd>
+                                <dt>Weapon</dt><dd>Fan / Magic Cards</dd>
+                                <dt>Affinity</dt><dd>Yin (Darkness, Introspection)</dd>
+                            </dl>
+                            <p class="character-bio">The sheltered daughter of Exorcist Ashiya Doman. She enters Fujiwara Manor seeking her missing father, accompanied by her sister Kureha — only to be separated. Her journey is one of discovery, confronting the truth of her family's involvement in the Kuon ritual. Gentle but resilient, she wields a fan and relies on magic cards for offense and defense.</p>
+                        </div>
+                    </article>
+
+                    <article class="character-card" data-character="sakuya">
+                        <div class="character-portrait">
+                            <div class="portrait-frame">
+                                <div class="portrait-silhouette sakuya" aria-hidden="true"></div>
+                                <div class="portrait-overlay"></div>
+                            </div>
+                            <div class="character-name-block">
+                                <h3 class="character-name">Sakuya</h3>
+                                <span class="character-name-kanji">さくや</span>
+                                <span class="character-phase">Yang Phase • Chapter of Light</span>
+                            </div>
+                        </div>
+                        <div class="character-details">
+                            <dl class="character-stats">
+                                <dt>Role</dt><dd>Onmyōji Apprentice / Disciple of Doman</dd>
+                                <dt>Weapon</dt><dd>Ofuda / Summoning Cards</dd>
+                                <dt>Affinity</dt><dd>Yang (Light, Action)</dd>
+                            </dl>
+                            <p class="character-bio">A talented onmyōji-in-training and Doman's devoted disciple. Sent to investigate the manor's disturbances, she approaches the supernatural with clinical determination. Her phase emphasizes summoning spirits and purification rites. As the story unfolds, her loyalty to Doman is tested by the horrors she witnesses.</p>
+                        </div>
+                    </article>
+
+                    <article class="character-card" data-character="seimei">
+                        <div class="character-portrait">
+                            <div class="portrait-frame">
+                                <div class="portrait-silhouette seimei" aria-hidden="true"></div>
+                                <div class="portrait-overlay"></div>
+                            </div>
+                            <div class="character-name-block">
+                                <h3 class="character-name">Abe no Seimei</h3>
+                                <span class="character-name-kanji">あべのせいめい</span>
+                                <span class="character-phase">Kuon Phase • Chapter of Eternity</span>
+                            </div>
+                        </div>
+                        <div class="character-details">
+                            <dl class="character-stats">
+                                <dt>Role</dt><dd>Master Onmyōji / Historical Figure (Reimagined)</dd>
+                                <dt>Weapon</dt><dd>Infinite Spiritual Power / Shikigami</dd>
+                                <dt>Affinity</dt><dd>Kuon (Transcendence)</dd>
+                            </dl>
+                            <p class="character-bio">The legendary onmyōji of the Heian court, here reimagined as a woman — a deliberate subversion by FromSoftware. Rival to Doman, she enters the manor in the hidden third phase with overwhelming power: infinite MP, maximum speed, and access to all spells. Her presence reframes the entire narrative, revealing the truth behind the Kuon spell and the twins' origin.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="supporting-characters">
+                    <h3 class="subsection-title">Key Figures</h3>
+                    <div class="supporting-grid">
+                        <article class="supporting-card">
+                            <h4>Ashiya Doman</h4>
+                            <span class="supporting-kanji">芝屋道満</span>
+                            <p>Utsuki's father, Sakuya's master. A powerful exorcist consumed by obsession with the Kuon spell to resurrect his dead daughter Kureha. The primary antagonist.</p>
+                        </article>
+                        <article class="supporting-card">
+                            <h4>Kureha</h4>
+                            <span class="supporting-kanji">紅葉</span>
+                            <p>Utsuki's younger sister, killed in an accident years prior. Her resurrection via the incomplete Kuon spell sets the tragedy in motion. Appears as a ghostly presence throughout.</p>
+                        </article>
+                        <article class="supporting-card">
+                            <h4>The Twin Children</h4>
+                            <span class="supporting-kanji">双子の子供</span>
+                            <p>Manifestations of the cursed mulberry trees. They sing the Kuon Song, guide (and mislead) the protagonists, and embody the cycle of the ritual. Their blinking, unsettling presence haunts every phase.</p>
+                        </article>
+                        <article class="supporting-card">
+                            <h4>Lord Fujiwara</h4>
+                            <span class="supporting-kanji">藤原</span>
+                            <p>The manor's lord, attacked in the opening cinematic. His pursuit of immortality through forbidden arts doomed the household. His corpse becomes the first vessel for the Kuon ritual.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Section -->
+        <section id="development" class="section section-development" aria-labelledby="development-title">
+            <div class="section-header">
+                <h2 id="development-title" class="section-title">
+                    <span class="title-number">03</span>
+                    <span class="title-text">Development</span>
+                    <span class="title-kanji-small">開発</span>
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content">
+                <div class="dev-timeline">
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-content">
+                            <h3>Origins (2003)</h3>
+                            <p>Development began after <em>Lost Kingdoms II</em> wrapped. Producer <strong>Atsushi Taniguchi</strong> wanted a new approach to horror using a traditional Japanese setting — distinct from the Western-influenced <em>Echo Night</em> trilogy. The team sought an artist whose work could "suggest fear" and leave "an impact."</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-content">
+                            <h3>Finding Kyosuke Chinai</h3>
+                            <p>After extensive searching, they discovered <strong>Kyosuke Chinai</strong> — a traditional Japanese painter known for hypnotic portraits of women on washi paper using acrylic. His 1985 work <em>"Tsua-ayashi" (Strange Face)</em> became the Japanese cover art. Chinai painted a series of works that defined the game's visual identity, used in menus, advertising, and packaging.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-content">
+                            <h3>Art Direction</h3>
+                            <p><strong>Nozomu Iwai</strong> served as art director (credited under "Special Thanks"). Designers <strong>Kojo Takashi</strong> and <strong>Fuwa Tomoko</strong> crafted concept art and storyboards — over 100 concepts were produced. <strong>Murakami Kanna</strong> (credited as "Extra Character Designer") won an internal contest; her design became the basis for the female Abe no Seimei.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-content">
+                            <h3>Release & Reception (2004–2006)</h3>
+                            <p>Released in Japan on <strong>April 1, 2004</strong> (April Fool's Day — intentional). North America (Agetec) followed on <strong>December 7, 2004</strong>; Europe (Nobilis/Indie Games Productions) on <strong>April 14, 2006</strong>. Metacritic: 57/100. Praised for atmosphere, art direction, and sound; criticized for gameplay simplicity and backtracking. A commercial failure, making it a rare collector's item today.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="dev-credits">
+                    <h3 class="subsection-title">Key Staff</h3>
+                    <div class="credits-grid">
+                        <div class="credit-item">
+                            <span class="credit-role">Producer</span>
+                            <span class="credit-name">Atsushi Taniguchi</span>
+                        </div>
+                        <div class="credit-item">
+                            <span class="credit-role">Art Director</span>
+                            <span class="credit-name">Nozomu Iwai</span>
+                        </div>
+                        <div class="credit-item">
+                            <span class="credit-role">Promotional Artist</span>
+                            <span class="credit-name">Kyosuke Chinai</span>
+                        </div>
+                        <div class="credit-item">
+                            <span class="credit-role">Character Designers</span>
+                            <span class="credit-name">Kojo Takashi, Fuwa Tomoko</span>
+                        </div>
+                        <div class="credit-item">
+                            <span class="credit-role">Extra Character Design</span>
+                            <span class="credit-name">Murakami Kanna</span>
+                        </div>
+                        <div class="credit-item">
+                            <span class="credit-role">Music</span>
+                            <span class="credit-name">Kota Hoshino, Yuka Kitamura</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artwork Section -->
+        <section id="artwork" class="section section-artwork" aria-labelledby="artwork-title">
+            <div class="section-header">
+                <h2 id="artwork-title" class="section-title">
+                    <span class="title-number">04</span>
+                    <span class="title-text">Artwork & Visual Identity</span>
+                    <span class="title-kanji-small">美術</span>
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content">
+                <div class="artwork-showcase">
+                    <article class="artwork-feature">
+                        <header class="artwork-header">
+                            <h3>Kyosuke Chinai — Promotional Paintings</h3>
+                            <p class="artwork-desc">Chinai's haunting portraits — blending traditional Japanese techniques with Western oil sensibilities — define Kuon's visual soul. His subjects: pale women in kimono, hollow eyes, surrounded by negative space that feels like held breath.</p>
+                        </header>
+                        <div class="artwork-gallery" role="list" aria-label="Chinai promotional artwork">
+                            <figure class="gallery-item" data-caption="「Tsua-ayashi (Strange Face)\" — 1985. The iconic Japanese cover art.">
+                                <div class="gallery-placeholder" style="--accent: #8b1a1a;">
+                                    <span class="placeholder-text">Tsua-ayashi (1985)</span>
+                                    <span class="placeholder-kanji">怪しい顔</span>
+                                </div>
+                                <figcaption>「Tsua-ayashi (Strange Face)\" — 1985. The iconic Japanese cover art.</figcaption>
+                            </figure>
+                            <figure class="gallery-item" data-caption="Title screen background — Chinai's work adapted for the game's menu.">
+                                <div class="gallery-placeholder" style="--accent: #2d1b1b;">
+                                    <span class="placeholder-text">Title Screen Art</span>
+                                    <span class="placeholder-kanji">タイトル画面</span>
+                                </div>
+                                <figcaption>Title screen background — Chinai's work adapted for the game's menu.</figcaption>
+                            </figure>
+                            <figure class="gallery-item" data-caption="Promotional poster artwork featuring the twin children motif.">
+                                <div class="gallery-placeholder" style="--accent: #4a1c1c;">
+                                    <span class="placeholder-text">Twin Children Poster</span>
+                                    <span class="placeholder-kanji">双子のポスター</span>
+                                </div>
+                                <figcaption>Promotional poster artwork featuring the twin children motif.</figcaption>
+                            </figure>
+                            <figure class="gallery-item" data-caption="Magazine advertisement illustration — Heian-period aesthetic.">
+                                <div class="gallery-placeholder" style="--accent: #1a2d1a;">
+                                    <span class="placeholder-text">Magazine Ad Art</span>
+                                    <span class="placeholder-kanji">雑誌広告</span>
+                                </div>
+                                <figcaption>Magazine advertisement illustration — Heian-period aesthetic.</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="artwork-feature">
+                        <header class="artwork-header">
+                            <h3>Regional Cover Variants</h3>
+                            <p class="artwork-desc">Four distinct regional releases, each with unique cover art. Japan alone produced three variants — a testament to the care given to the domestic presentation.</p>
+                        </header>
+                        <div class="covers-grid" role="list" aria-label="Regional cover art">
+                            <figure class="cover-card" data-region="Japan (Variant 1)">
+                                <div class="cover-image" style="--cover-gradient: linear-gradient(135deg, #1a0a0a 0%, #3d1a1a 50%, #1a0a0a 100%);">
+                                    <span class="cover-label">Japan</span>
+                                    <span class="cover-variant">Center Artwork + Side Renders</span>
+                                </div>
+                                <figcaption>Japan — Variant 1: Central Chinai artwork with character renders flanking.</figcaption>
+                            </figure>
+                            <figure class="cover-card" data-region="Japan (Variant 2)">
+                                <div class="cover-image" style="--cover-gradient: linear-gradient(135deg, #0d0d0d 0%, #2d1515 50%, #0d0d0d 100%);">
+                                    <span class="cover-label">Japan</span>
+                                    <span class="cover-variant">Title Screen Artwork Only</span>
+                                </div>
+                                <figcaption>Japan — Variant 2: Clean title screen artwork, no renders.</figcaption>
+                            </figure>
+                            <figure class="cover-card" data-region="Japan (Variant 3)">
+                                <div class="cover-image" style="--cover-gradient: linear-gradient(135deg, #1a1010 0%, #4a1a1a 50%, #1a1010 100%);">
+                                    <span class="cover-label">Japan</span>
+                                    <span class="cover-variant">Final Slide Artwork</span>
+                                </div>
+                                <figcaption>Japan — Variant 3: The closing cinematic's artwork as cover.</figcaption>
+                            </figure>
+                            <figure class="cover-card" data-region="North America">
+                                <div class="cover-image" style="--cover-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);">
+                                    <span class="cover-label">North America</span>
+                                    <span class="cover-variant">Agetec Localization</span>
+                                </div>
+                                <figcaption>North America — Widely considered the weakest; generic 3D render.</figcaption>
+                            </figure>
+                            <figure class="cover-card" data-region="Europe">
+                                <div class="cover-image" style="--cover-gradient: linear-gradient(135deg, #0a0a0a 0%, #0a1a1a 50%, #0a0a0a 100%);">
+                                    <span class="cover-label">Europe (PAL)</span>
+                                    <span class="cover-variant">Indie Games Productions</span>
+                                </div>
+                                <figcaption>Europe — Distinct blue-tinted design; includes promo disc variant.</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="artwork-feature">
+                        <header class="artwork-header">
+                            <h3>In-Game Visual Design</h3>
+                            <p class="artwork-desc">The manor's architecture draws from <em>shinden-zukuri</em> (Heian aristocratic residences): raised floors, sliding <em>shōji</em> screens, verandas overlooking gardens. Enemy designs fuse historical <em>yōkai</em> imagery with body horror — mutated monks, faceless women, amalgamations of flesh and silk.</p>
+                        </header>
+                        <div class="concept-grid" role="list" aria-label="Concept art categories">
+                            <div class="concept-card">
+                                <div class="concept-icon">🏯</div>
+                                <h4>Manor Architecture</h4>
+                                <p>Faithful <em>shinden-zukuri</em> layouts corrupted by supernatural decay.</p>
+                            </div>
+                            <div class="concept-card">
+                                <div class="concept-icon">👻</div>
+                                <h4>Yōkai & Mutants</h4>
+                                <p>Traditional spirits twisted by the Kuon ritual: <em>Gaki</em>, <em>Onryō</em>, silk-worm hybrids.</p>
+                            </div>
+                            <div class="concept-card">
+                                <div class="concept-icon">🎴</div>
+                                <h4>Card Illustrations</h4>
+                                <p>Spell and summon cards feature brush-stroke art — each a miniature <em>sumi-e</em>.</p>
+                            </div>
+                            <div class="concept-card">
+                                <div class="concept-icon">📜</div>
+                                <h4>UI & Menus</h4>
+                                <p>Paper textures, ink blots, seal-stamp buttons — every interface element feels like a artifact.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotional Section -->
+        <section id="promotional" class="section section-promotional" aria-labelledby="promotional-title">
+            <div class="section-header">
+                <h2 id="promotional-title" class="section-title">
+                    <span class="title-number">05</span>
+                    <span class="title-text">Promotional Materials</span>
+                    <span class="title-kanji-small">プロモーション</span>
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content">
+                <div class="promo-grid">
+                    <article class="promo-card">
+                        <header class="promo-header">
+                            <span class="promo-icon">📘</span>
+                            <h3>Novel Edition: Chapter of Memory</h3>
+                        </header>
+                        <div class="promo-body">
+                            <p>A promotional booklet released alongside the game, written by scenario writer <strong>Atsushi Taniguchi</strong>. Contains the short story <em>"Utsuki and Kureha"</em> expanding on the sisters' backstory. Fully scanned and preserved on the <a href="https://archive.org/details/kuon-novel-edition-images" target="_blank" rel="noopener">Internet Archive</a> with English translation.</p>
+                            <div class="promo-links">
+                                <a href="https://archive.org/details/kuon-novel-edition-images" target="_blank" rel="noopener" class="btn btn-secondary">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M17 19V9.5a3.5 3.5 0 0 0-7 0V19"/></svg>
+                                    View on Internet Archive
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="promo-card">
+                        <header class="promo-header">
+                            <span class="promo-icon">📰</span>
+                            <h3>Magazine Advertising</h3>
+                        </header>
+                        <div class="promo-body">
+                            <p>Japanese magazine spreads (Famitsu, Dengeki PlayStation, etc.) featured Chinai's artwork prominently. Ads emphasized the "Kaidan Action" genre label, the Heian setting, and the three-phase structure. The <strong>Famitsu September 2003</strong> issue broke the announcement.</p>
+                            <div class="promo-links">
+                                <a href="https://library.gamehistory.org/repositories/2/archival_objects/17766" target="_blank" rel="noopener" class="btn btn-secondary">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M17 19V9.5a3.5 3.5 0 0 0-7 0V19"/></svg>
+                                    VGHF Digital Archive
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="promo-card">
+                        <header class="promo-header">
+                            <span class="promo-icon">🖼️</span>
+                            <h3>Posters & Physical Items</h3>
+                        </header>
+                        <div class="promo-body">
+                            <p>B2-sized promotional posters for Japanese retailers showcased Chinai's paintings at large scale. Pre-order bonuses included a <strong>soundtrack CD</strong> (haunting arrangements by Kota Hoshino) and a <strong>promotional DVD</strong> ("Kuon Visual Preview") with developer interviews and concept art galleries. European release included a separate promo DVD.</p>
+                        </div>
+                    </article>
+
+                    <article class="promo-card">
+                        <header class="promo-header">
+                            <span class="promo-icon">💿</span>
+                            <h3>Demo & Press Discs</h3>
+                        </header>
+                        <div class="promo-body">
+                            <p>Multiple press builds exist: a <strong>Japanese demo disc</strong> (playable Yin Phase snippet), a <strong>European PAL promo DVD</strong>, and the <strong>Visual Preview DVD</strong> (developer commentary, art gallery, trailer). The Video Game History Foundation holds physical copies; disc images circulate in preservation communities.</p>
+                            <div class="promo-links">
+                                <a href="https://library.gamehistory.org/repositories/2/archival_objects/17771" target="_blank" rel="noopener" class="btn btn-secondary">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M17 19V9.5a3.5 3.5 0 0 0-7 0V19"/></svg>
+                                    VGHF Promo Disc Entry
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="promo-card">
+                        <header class="promo-header">
+                            <span class="promo-icon">📦</span>
+                            <h3>Complete Collection Variants</h3>
+                        </header>
+                        <div class="promo-body">
+                            <p>Collectors have documented <strong>six regional physical variants</strong>: Japan (NTSC-J, 3 cover variants), North America (NTSC-U/C), Europe (PAL, standard + German packaging), Korea (NTSC-J with 18+ rating stickers), and Asia (same disc as Japan, different rating). The <strong>PAL promo disc</strong> is a separate seventh item. Prices for complete sets exceed ¥20,000+.</p>
+                        </div>
+                    </article>
+
+                    <article class="promo-card">
+                        <header class="promo-header">
+                            <span class="promo-icon">🎵</span>
+                            <h3>Soundtrack & Audio</h3>
+                        </header>
+                        <div class="promo-body">
+                            <p>Composed by <strong>Kota Hoshino</strong> and <strong>Yuka Kitamura</strong> (later of Dark Souls/Elden Ring fame). The score blends traditional Japanese instruments (shakuhachi, koto, taiko) with ambient horror drones. The <em>Kuon Song</em> — sung by the twin children — recurs as a leitmotif. No official soundtrack album was released; audio is ripped from the game/pre-order CD.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legacy Section -->
+        <section id="legacy" class="section section-legacy" aria-labelledby="legacy-title">
+            <div class="section-header">
+                <h2 id="legacy-title" class="section-title">
+                    <span class="title-number">06</span>
+                    <span class="title-text">Legacy & Revival</span>
+                    <span class="title-kanji-small">遺産</span>
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content">
+                <div class="legacy-grid">
+                    <article class="legacy-card">
+                        <header class="legacy-header">
+                            <span class="legacy-icon">🕯️</span>
+                            <h3>Cult Following</h3>
+                        </header>
+                        <div class="legacy-body">
+                            <p>Despite poor sales, Kuon developed a devoted cult following. Fans praise its <strong>unmatched atmosphere</strong>, <strong>authentic Japanese horror</strong> (distinct from Western tropes), and <strong>Chinai's artwork</strong>. It's frequently cited alongside <em>Fatal Frame</em>, <em>Siren</em>, and <em>Haunting Ground</em> as a PS2 horror essential.</p>
+                            <p>The game's rarity — physical copies command high prices, no digital re-release exists — has only deepened its mystique. "Revival in the Reiwa era" remains a common fan refrain.</p>
+                        </div>
+                    </article>
+
+                    <article class="legacy-card">
+                        <header class="legacy-header">
+                            <span class="legacy-icon">🔗</span>
+                            <h3>FromSoftware DNA</h3>
+                        </header>
+                        <div class="legacy-body">
+                            <p>Kuon's fingerprints appear in later FromSoftware titles:</p>
+                            <ul class="dna-list">
+                                <li><strong>Fixed camera language</strong> → environmental storytelling in Souls games</li>
+                                <li><strong>Item descriptions as lore</strong> → the "fragmented narrative" approach</li>
+                                <li><strong>Oppressive atmosphere over jump scares</strong> → hallmark of Miyazaki's direction</li>
+                                <li><strong>Japanese mythology + body horror</strong> → <em>Sekiro</em>'s Divine Dragon, <em>Elden Ring</em>'s Godskin</li>
+                                <li><strong>Yuka Kitamura's musical evolution</strong> → from Kuon's ambient dread to Elden Ring's orchestral grandeur</li>
+                            </ul>
+                            <p><em>Hidetaka Miyazaki joined FromSoftware in 2004 — the year Kuon released. He was not involved, but the studio's horror lineage informed his later work.</em></p>
+                        </div>
+                    </article>
+
+                    <article class="legacy-card">
+                        <header class="legacy-header">
+                            <span class="legacy-icon">📚</span>
+                            <h3>Preservation Efforts</h3>
+                        </header>
+                        <div class="legacy-body">
+                            <p>The <strong>Video Game History Foundation</strong> holds the FromSoftware Promotional Material Collection (7 boxes, 30+ years). The Kuon subset includes: press kits, magazine clippings, flyers, the Novel Edition booklet, European promo disc, and more. Much is digitized on <a href="https://archive.gamehistory.org" target="_blank" rel="noopener">archive.gamehistory.org</a>.</p>
+                            <p>The <strong>Internet Archive</strong> hosts the full Novel Edition scans. Community projects document every regional variant, translate lore, and maintain wikis. Emulation (PCSX2) with widescreen patches is the only accessible way to play today.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="legacy-quote">
+                    <blockquote>
+                        <p>"Kuon is one of those rare games where the atmosphere is so thick you can taste it — copper and incense, old paper and blood. It's flawed, yes. But it's <em>alive</em> in a way few horror games ever achieve."</p>
+                        <footer>— <cite>Retrospective critique, 2024</cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Lightbox Trigger Area (hidden) -->
+        <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+            <button class="lightbox-close" aria-label="Close preview">&times;</button>
+            <div class="lightbox-content">
+                <img id="lightboxImage" src="" alt="">
+                <figcaption id="lightboxCaption"></figcaption>
+            </div>
+            <button class="lightbox-nav lightbox-prev" aria-label="Previous image">&#8249;</button>
+            <button class="lightbox-nav lightbox-next" aria-label="Next image">&#8250;</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <span class="kanji" data-text="九怨">九怨</span>
+                    <span class="romaji">KUON</span>
+                </div>
+                <p class="footer-tagline">A tribute to FromSoftware's 2004 survival horror masterpiece.</p>
+            </div>
+            <div class="footer-links">
+                <nav aria-label="External resources">
+                    <a href="https://en.wikipedia.org/wiki/Kuon" target="_blank" rel="noopener">Wikipedia</a>
+                    <a href="https://www.fromsoftware.jp/ww/detail.html?csm=032" target="_blank" rel="noopener">Official Product Page</a>
+                    <a href="https://library.gamehistory.org/repositories/2/archival_objects/17766" target="_blank" rel="noopener">VGHF Archive</a>
+                    <a href="https://archive.org/details/kuon-novel-edition-images" target="_blank" rel="noopener">Novel Edition Scans</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Tribute Site. Kuon &copy; FromSoftware. All artwork &copy; respective artists (Kyosuke Chinai, Nozomu Iwai, Kojo Takashi, Fuwa Tomoko, Murakami Kanna).</p>
+                <p class="footer-note">This is an unofficial fan site. Not affiliated with FromSoftware, Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
